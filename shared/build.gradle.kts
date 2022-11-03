@@ -3,8 +3,11 @@ plugins {
     id("com.android.library")
     id("co.touchlab.faktory.kmmbridge") version "0.3.1"
     `maven-publish`
-
 }
+version = "1.0"
+group = "ge.tkach13.sharedlib"
+
+
 kmmbridge {
     mavenPublishArtifacts()
     manualVersions()
@@ -22,6 +25,19 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
+        }
+    }
+    publishing {
+        repositories {
+            maven {
+                //1
+                url = uri("https://maven.pkg.github.com/tkach13/sharedLib")
+                //2
+                credentials(PasswordCredentials::class)
+                authentication {
+                    create<BasicAuthentication>("basic")
+                }
+            }
         }
     }
 
