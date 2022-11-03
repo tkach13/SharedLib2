@@ -17,7 +17,7 @@ kmmbridge {
 
 kotlin {
     android()
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -30,12 +30,10 @@ kotlin {
     publishing {
         repositories {
             maven {
-                //1
-                url = uri("https://maven.pkg.github.com/tkach13/sharedLib")
-                //2
-                credentials(PasswordCredentials::class)
-                authentication {
-                    create<BasicAuthentication>("basic")
+                url = uri("https://tfssrv.hq.tbc/DefaultCollection/112c2bce-6ea4-429d-a839-faf2392b9511/_packaging/TestForKmm/maven/v1")
+                credentials {
+                    username = "DefaultCollection"
+                    password =  "zr7rfhfg3hckd6lgqnswyayflba4ubqzmwlxq42pr5zsml36trvq"
                 }
             }
         }
