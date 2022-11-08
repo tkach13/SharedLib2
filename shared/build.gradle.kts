@@ -4,18 +4,21 @@ plugins {
     id("co.touchlab.faktory.kmmbridge") version "0.3.1"
     `maven-publish`
 }
-version = "1.0"
+version = "1.1"
 group = "ge.tkach13.sharedlib"
 
 
 kmmbridge {
-    mavenPublishArtifacts()
-    manualVersions()
+    addGithubPackagesRepository()
+    githubReleaseArtifacts()
+    githubReleaseVersions()
     spm()
     //etc
 }
 
 kotlin {
+
+
     android()
 
     listOf(
@@ -27,17 +30,7 @@ kotlin {
             baseName = "shared"
         }
     }
-    publishing {
-        repositories {
-            maven {
-                url = uri("https://tfssrv.hq.tbc/DefaultCollection/112c2bce-6ea4-429d-a839-faf2392b9511/_packaging/TestForKmm/maven/v1")
-                credentials {
-                    username = "DefaultCollection"
-                    password =  "zr7rfhfg3hckd6lgqnswyayflba4ubqzmwlxq42pr5zsml36trvq"
-                }
-            }
-        }
-    }
+
 
     sourceSets {
         val commonMain by getting
